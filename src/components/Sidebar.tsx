@@ -5,7 +5,7 @@ export default function Sidebar() {
     const sidebarFlex = "flex flex-col items-center"
 
     return(
-        <aside className={`${sidebarFlex} gap-6 bg-[var(--black)] sticky top-0 left-0 py-6 px-4`}>
+        <aside className={`${sidebarFlex} gap-6 bg-[var(--black)] py-6 px-4 w-[175px]`}>
             <div className={`${sidebarFlex} gap-2`}>
                 <Image src={profile} alt="foto de perfil" width={60} className="rounded rounded-full" />
                 <span className="text-xl font-bold">TurinoS</span>
