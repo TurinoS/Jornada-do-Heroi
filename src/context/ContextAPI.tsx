@@ -8,7 +8,7 @@ interface HeoresData {
     slug: string,
     powerstats: {
         inteligence: number,
-        strngth: number,
+        strength: number,
         speed: number,
         durability: number,
         power: number,

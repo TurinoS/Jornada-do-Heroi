@@ -14,9 +14,9 @@ export default function Home() {
       <Sidebar />
       <div className="w-full">
         <Header />
-        <section className="flex gap-6 flex-wrap">
+        <section className="flex gap-6 flex-wrap p-8 justify-between">
           {data.map((hero) => (
-            <HeroCard key={hero.id} id={hero.id} name={hero.name} img={hero.images.md} />
+            <HeroCard key={hero.id} powerstats={hero.powerstats} name={hero.name} img={hero.images.md} />
           ))}
         </section>
       </div>

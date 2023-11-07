@@ -8,14 +8,12 @@
   --dark-gray: #18181d;
   --gray: #444746;
   --purple: #5356fb;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --intelligence: #04a902;
+  --strength: #FF4136;
+  --speed: #FFDC00;
+  --durability: #000000;
+  --power: #B10DC9;
+  --combat: #9f9f9f;
 }
 
 body {
