@@ -19,14 +19,14 @@ export default function Sidebar() {
                 <h2 className="text-[var(--purple)] text-xl font-bold uppercase">Cards</h2>
                 {cardsSelection.length === 0 ? 
                 <>
-                    <div className="border-l-[8px] border-[var(--dark-gray)] w-full h-[150px]"></div>
-                    <div className="border-l-[8px] border-[var(--dark-gray)] w-full h-[150px]"></div>
+                    <div className="border-l-[8px] border-[var(--purple)] w-full h-[225px]"></div>
+                    <div className="border-l-[8px] border-[var(--purple)] w-full h-[225px]"></div>
                 </>
                 :
                 cardsSelection.length === 1 ? cardsSelection.map((hero) => (
                     <>
                         <HeroCard imgs={hero.imgs} name={hero.name} powerstats={hero.powerstats} key={hero.id} id={hero.id} sm />
-                        <div className="border-l-[8px] border-[var(--dark-gray)] w-full h-[150px]"></div>
+                        <div className="border-l-[8px] border-[var(--purple)] w-full h-[225px]"></div>
                     </>
                 )) :
                 cardsSelection.length === 2 && cardsSelection.map((hero) => (
