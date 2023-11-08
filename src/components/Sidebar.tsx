@@ -1,5 +1,6 @@
 import Image from "next/image";
 import profile from '../../public/foto-perfil.png'
+import Button from "./Button";
 
 export default function Sidebar() {
     const sidebarFlex = "flex flex-col items-center"
@@ -14,7 +15,7 @@ export default function Sidebar() {
                 <h2 className="text-[var(--purple)] text-xl font-bold uppercase">Cards</h2>
                 <div className="border-l-[8px] border-[var(--dark-gray)] w-full h-[150px]"></div>
                 <div className="border-l-[8px] border-[var(--dark-gray)] w-full h-[150px]"></div>
-                <button className="bg-[var(--purple)] rounded-xl px-4 py-1">Reset cards</button>
+                <Button onClick={() => console.log("resetou")}>Reset Cards</Button>
             </div>
         </aside>
     )
