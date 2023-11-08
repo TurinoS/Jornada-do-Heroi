@@ -28,7 +28,7 @@ export default function Home() {
         </div>
         <section className="flex gap-6 flex-wrap px-10 py-8 justify-between">
           {heroesToRender.map((hero) => (
-            <HeroCard key={hero.id} powerstats={hero.powerstats} name={hero.name} img={hero.images.md} />
+            <HeroCard key={hero.id} powerstats={hero.powerstats} name={hero.name} imgs={hero.images} id={hero.id} sm={false} />
           ))}
         </section>
       </div>

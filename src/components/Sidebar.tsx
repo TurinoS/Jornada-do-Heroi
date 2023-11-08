@@ -1,8 +1,12 @@
 import Image from "next/image";
 import profile from '../../public/foto-perfil.png'
 import Button from "./Button";
+import { useContext } from "react";
+import { ContextAPI } from "@/context/ContextAPI";
+import HeroCard from "./HeroCard";
 
 export default function Sidebar() {
+    const { cardsSelection, setCardsSelection } = useContext(ContextAPI);
     const sidebarFlex = "flex flex-col items-center"
 
     return(
@@ -13,9 +17,23 @@ export default function Sidebar() {
             </div>
             <div className={`${sidebarFlex} gap-4`}>
                 <h2 className="text-[var(--purple)] text-xl font-bold uppercase">Cards</h2>
-                <div className="border-l-[8px] border-[var(--dark-gray)] w-full h-[150px]"></div>
-                <div className="border-l-[8px] border-[var(--dark-gray)] w-full h-[150px]"></div>
-                <Button onClick={() => console.log("resetou")}>Reset Cards</Button>
+                {cardsSelection.length === 0 ? 
+                <>
+                    <div className="border-l-[8px] border-[var(--dark-gray)] w-full h-[150px]"></div>
+                    <div className="border-l-[8px] border-[var(--dark-gray)] w-full h-[150px]"></div>
+                </>
+                :
+                cardsSelection.length === 1 ? cardsSelection.map((hero) => (
+                    <>
+                        <HeroCard imgs={hero.imgs} name={hero.name} powerstats={hero.powerstats} key={hero.id} id={hero.id} sm />
+                        <div className="border-l-[8px] border-[var(--dark-gray)] w-full h-[150px]"></div>
+                    </>
+                )) :
+                cardsSelection.length === 2 && cardsSelection.map((hero) => (
+                    <HeroCard imgs={hero.imgs} name={hero.name} powerstats={hero.powerstats} key={hero.id} id={hero.id} sm />
+                ))}
+                
+                <Button onClick={() => setCardsSelection([])}>Reset Cards</Button>
             </div>
         </aside>
     )

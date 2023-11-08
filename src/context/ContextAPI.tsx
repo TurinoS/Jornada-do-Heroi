@@ -1,11 +1,11 @@
 'use client'
 
-import { ReactNode, createContext, useEffect, useState } from "react";
+import { Dispatch, ReactNode, SetStateAction, createContext, useEffect, useState } from "react";
 
 interface HeoresData {
     id: number,
     name: string,
-    slug: string,
+    // slug: string,
     powerstats: {
         inteligence: number,
         strength: number,
@@ -14,34 +14,52 @@ interface HeoresData {
         power: number,
         combat: number,
     }
-    appearance: {
-        gender: string,
-        race: string,
-        height: string[],
-        weight: string[],
-        eyeColor: string,
-        hairColor: string,
-    }
-    biography: {
-        fullName: string,
-        alterEgos: string,
-        aliases: string,
-    }
+    // appearance: {
+    //     gender: string,
+    //     race: string,
+    //     height: string[],
+    //     weight: string[],
+    //     eyeColor: string,
+    //     hairColor: string,
+    // }
+    // biography: {
+    //     fullName: string,
+    //     alterEgos: string,
+    //     aliases: string,
+    // }
     images: {
+        sm: string,
         md: string,
     }
 }
 
+type CardProps = {
+    id: number;
+    imgs: {
+      sm: string,
+      md: string,
+    };
+    name: string;
+    powerstats: {
+      [key: string]: number;
+    };
+  };
+
 type ContextAPI = {
-    data: HeoresData[]
+    data: HeoresData[];
+    cardsSelection: CardProps[];
+    setCardsSelection: Dispatch<SetStateAction<CardProps[]>>;
 }
 
 export const ContextAPI = createContext<ContextAPI>({
-    data: []
+    data: [],
+    cardsSelection: [],
+    setCardsSelection: () => {},
 })
 
 export default function ContextAPIProvider({ children }: { children: ReactNode }) {
     const [data, setData] = useState<HeoresData[]>([])
+    const [cardsSelection, setCardsSelection] = useState<CardProps[]>([])
 
     useEffect(() => {
         const fetchData = async () => {
@@ -53,7 +71,7 @@ export default function ContextAPIProvider({ children }: { children: ReactNode }
     }, []);
 
     return(
-        <ContextAPI.Provider value={{ data }}>
+        <ContextAPI.Provider value={{ data, cardsSelection, setCardsSelection }}>
             {children}
         </ContextAPI.Provider>
     )
