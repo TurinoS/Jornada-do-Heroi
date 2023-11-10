@@ -6,16 +6,10 @@ import Header from "@/components/Header";
 import HeroCard from "@/components/HeroCard";
 import Sidebar from "@/components/Sidebar";
 import { ContextAPI } from "@/context/ContextAPI";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 
 export default function Home() {
-  const { data } = useContext(ContextAPI);
-  const [page, setPage] = useState(1);
-
-  const heroesPerPage = 20;
-  const startIndex = (page - 1) * heroesPerPage;
-  const endIndex = startIndex + heroesPerPage;
-  const heroesToRender = data.slice(startIndex, endIndex);
+  const { data, page, setPage, heroesPerPage, heroesToRender } = useContext(ContextAPI);
 
   return (
     <main className="min-h-screen flex">

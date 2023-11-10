@@ -45,8 +45,7 @@ export default function HeroCard({ name, imgs, powerstats, id, sm }: CardProps) 
   return (
     <div onClick={() => handleClick(sm)} className={`rounded-lg border-2 border-[var(--${maxPowerstatName})] overflow-hidden flex flex-col items-center ${!sm && `cursor-pointer hover:scale-105 hover:shadow-[4px_4px_20px_6px_var(--${maxPowerstatName})] transition duration-500`}`}>
       <Image src={imgs.md} alt={name} width={150} height={150} />
-      <div className="py-2">
-        <h3 className="text-lg font-bold text-center w-full">{name}</h3>
+      <div className="pt-2 ">
         {!sm && <p className="flex justify-center items-center gap-2 text-lg">
           {maxPowerstatName === "strength" ? (
             <GiPunch />
@@ -61,8 +60,8 @@ export default function HeroCard({ name, imgs, powerstats, id, sm }: CardProps) 
           ) : (
             <GiBattleGear />
           )}
-          {totalPower}
         </p>}
+        <h3 className="text-lg font-bold text-center w-full">{name}</h3>
       </div>
     </div>
   );

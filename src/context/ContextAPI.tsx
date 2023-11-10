@@ -49,17 +49,32 @@ type ContextAPI = {
     data: HeoresData[];
     cardsSelection: CardProps[];
     setCardsSelection: Dispatch<SetStateAction<CardProps[]>>;
+    page: number;
+    setPage: Dispatch<SetStateAction<number>>;
+    heroesPerPage: number;
+    heroesToRender: HeoresData[];
+    search: string;
+    setSearch: Dispatch<SetStateAction<string>>
 }
 
 export const ContextAPI = createContext<ContextAPI>({
     data: [],
     cardsSelection: [],
     setCardsSelection: () => {},
+    page: 1,
+    setPage: () => {},
+    heroesPerPage: 24,
+    heroesToRender: [],
+    search: "",
+    setSearch: () => {},
 })
 
 export default function ContextAPIProvider({ children }: { children: ReactNode }) {
     const [data, setData] = useState<HeoresData[]>([])
+    const [heroesToRender, setHeroesToRender] = useState<HeoresData[]>([])
     const [cardsSelection, setCardsSelection] = useState<CardProps[]>([])
+    const [page, setPage] = useState(1);
+    const [search , setSearch] = useState('');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -69,9 +84,24 @@ export default function ContextAPIProvider({ children }: { children: ReactNode }
         };
         fetchData();
     }, []);
+      
+    const heroesPerPage = 24;
+    const startIndex = (page - 1) * heroesPerPage;
+    const endIndex = startIndex + heroesPerPage;
+
+    useEffect(() => {
+        if (search !== "") {
+            const filteredHeroes = data.filter((hero) =>
+                hero.name.toLowerCase().includes(search.toLowerCase())
+            );
+            setHeroesToRender(filteredHeroes)
+        } else {
+            setHeroesToRender(data.slice(startIndex, endIndex));
+        }
+    }, [data, page, search, startIndex, endIndex])
 
     return(
-        <ContextAPI.Provider value={{ data, cardsSelection, setCardsSelection }}>
+        <ContextAPI.Provider value={{ data, cardsSelection, setCardsSelection, page, setPage, heroesPerPage, heroesToRender, search, setSearch }}>
             {children}
         </ContextAPI.Provider>
     )
