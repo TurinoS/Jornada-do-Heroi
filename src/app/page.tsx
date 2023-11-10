@@ -7,9 +7,10 @@ import HeroCard from "@/components/HeroCard";
 import Sidebar from "@/components/Sidebar";
 import { ContextAPI } from "@/context/ContextAPI";
 import { useContext } from "react";
+import Modal from "@/components/Modal";
 
 export default function Home() {
-  const { data, page, setPage, heroesPerPage, heroesToRender } = useContext(ContextAPI);
+  const { data, page, setPage, heroesPerPage, heroesToRender, cardsSelection } = useContext(ContextAPI);
 
   return (
     <main className="min-h-screen flex">
@@ -26,6 +27,7 @@ export default function Home() {
             <HeroCard key={hero.id} powerstats={hero.powerstats} name={hero.name} imgs={hero.images} id={hero.id} sm={false} />
           ))}
         </section>
+        {cardsSelection.length === 2 && <Modal />}
       </div>
     </main>
   )

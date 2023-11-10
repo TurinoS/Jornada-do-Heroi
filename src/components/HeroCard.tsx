@@ -37,7 +37,7 @@ export default function HeroCard({ name, imgs, powerstats, id, sm }: CardProps) 
 
   const handleClick = (sm: boolean) => {
     if (cardsSelection.length < 2 && !sm) {
-      const selectedCard = { name, imgs, powerstats, id };
+      const selectedCard = { name, imgs, powerstats, id, totalPower };
       setCardsSelection([...cardsSelection, selectedCard]);
     }
   };

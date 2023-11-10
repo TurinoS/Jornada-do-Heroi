@@ -43,6 +43,7 @@ type CardProps = {
     powerstats: {
       [key: string]: number;
     };
+    totalPower: number;
   };
 
 type ContextAPI = {
