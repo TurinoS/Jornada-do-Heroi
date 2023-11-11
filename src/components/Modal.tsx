@@ -15,7 +15,7 @@ export default function Modal() {
             <h2 className="text-center text-3xl font-bold">Winner: <span className="text-[var(--winner)] underline">{Hero1.totalPower > Hero2.totalPower ? Hero1.name : Hero2.name}</span></h2>
             <div className="flex justify-around items-center w-full mb-4">
                 <div className="flex flex-col items-center gap-2">
-                    <p className="text-2xl text-[var(--purple)] font-bold">{Hero1.name}: <span className=" text-[var(--purple)]">{Hero1.totalPower}</span></p>
+                    <p className="text-2xl text-[var(--white)] font-bold">{Hero1.name}: <span className=" text-[var(--purple)]">{Hero1.totalPower}</span></p>
                     <Image src={Hero1.imgs.md} alt={Hero1.name} width={175} height={175} />
                 </div>
                 <table>
