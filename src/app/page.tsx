@@ -8,6 +8,7 @@ import Sidebar from "@/components/Sidebar";
 import { ContextAPI } from "@/context/ContextAPI";
 import { useContext } from "react";
 import Modal from "@/components/Modal";
+import ReturnToTop from "@/components/ReturnToTop";
 
 export default function Home() {
   const { data, page, setPage, heroesPerPage, heroesToRender, cardsSelection } = useContext(ContextAPI);
@@ -27,6 +28,7 @@ export default function Home() {
             <HeroCard key={hero.id} powerstats={hero.powerstats} name={hero.name} imgs={hero.images} id={hero.id} sm={false} />
           ))}
         </section>
+        <ReturnToTop />
         {cardsSelection.length === 2 && <Modal />}
       </div>
     </main>
