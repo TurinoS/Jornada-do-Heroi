@@ -7,15 +7,9 @@ import HeroCard from "./HeroCard";
 
 export default function Sidebar() {
     const { cardsSelection, setCardsSelection } = useContext(ContextAPI);
-    const sidebarFlex = "flex flex-col items-center"
 
     return(
-        <aside className={`${sidebarFlex} gap-6 bg-[var(--black)] py-6 px-4 w-[175px]`}>
-            <div className={`${sidebarFlex} gap-2`}>
-                <Image src={profile} alt="foto de perfil" width={60} className="rounded rounded-full" />
-                <span className="text-xl font-bold">TurinoS</span>
-            </div>
-            <div className={`${sidebarFlex} gap-4`}>
+        <aside className="flex flex-col items-center justify-between bg-[var(--black)] py-2 px-4 w-[175px] fixed min-h-screen">
                 <h2 className="text-[var(--purple)] text-xl font-bold uppercase">Cards</h2>
                 {cardsSelection.length === 0 ? 
                 <>
@@ -34,7 +28,6 @@ export default function Sidebar() {
                 ))}
                 
                 <Button onClick={() => setCardsSelection([])}>Reset Cards</Button>
-            </div>
         </aside>
     )
 }

@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <main className="min-h-screen flex">
       <Sidebar />
-      <div className="w-full py-4">
+      <div className="w-full py-4 ml-[175px]">
         <Header />
         <div className="flex justify-between px-10 pt-4">
           <Button onClick={() => {page > 1 && setPage(page - 1)}}><AiOutlineLeft />Previous Page</Button>
