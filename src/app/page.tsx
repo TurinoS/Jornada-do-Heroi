@@ -11,7 +11,7 @@ import Modal from "@/components/Modal";
 import ReturnToTop from "@/components/ReturnToTop";
 
 export default function Home() {
-  const { data, page, setPage, heroesPerPage, heroesToRender, cardsSelection } = useContext(ContextAPI);
+  const { data, page, setPage, heroesPerPage, heroesToRender, cardsSelection, search } = useContext(ContextAPI);
 
   return (
     <main className="min-h-screen flex">
@@ -23,11 +23,13 @@ export default function Home() {
           <p>page {page} / {Math.ceil(data.length / heroesPerPage)}</p>
           <Button onClick={() => {page < (data.length / heroesPerPage) && setPage(page + 1)}}>Next Page<AiOutlineRight /></Button>
         </div>
-        <section className="flex gap-6 flex-wrap px-10 py-8 justify-between">
-          {heroesToRender.map((hero) => (
-            <HeroCard key={hero.id} powerstats={hero.powerstats} name={hero.name} imgs={hero.images} id={hero.id} sm={false} />
-          ))}
-        </section>
+        {heroesToRender.length === 0 && search ? <span className="flex justify-center pt-32 text-2xl">Hero not found</span> : heroesToRender.length === 0 ? <span className="flex justify-center pt-32 text-2xl">Loading...</span> :
+          <section className="flex gap-6 flex-wrap px-10 py-8 justify-between">
+            {heroesToRender.map((hero) => (
+              <HeroCard key={hero.id} powerstats={hero.powerstats} name={hero.name} imgs={hero.images} id={hero.id} sm={false} />
+            ))}
+          </section>
+        }
         <ReturnToTop />
         {cardsSelection.length === 2 && <Modal />}
       </div>
