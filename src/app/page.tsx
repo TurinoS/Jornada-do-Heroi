@@ -24,26 +24,24 @@ export default function Home() {
   return (
     <main className="min-h-screen flex">
       <Sidebar />
-      <div className="w-full py-4 ml-[175px]">
+      <div className="w-full md:py-4 py-1 md:ml-[175px]">
         <Header />
-        <div className="flex justify-between px-10 pt-4">
+        <div className="flex justify-center gap-4 px-2 pt-4">
           <Button
             onClick={() => {
               page > 1 && setPage(page - 1);
             }}
           >
             <AiOutlineLeft />
-            Previous Page
           </Button>
           <p>
-            page {page} / {Math.ceil(data.length / heroesPerPage)}
+            Page {page} / {Math.ceil(data.length / heroesPerPage)}
           </p>
           <Button
             onClick={() => {
               page < data.length / heroesPerPage && setPage(page + 1);
             }}
           >
-            Next Page
             <AiOutlineRight />
           </Button>
         </div>
@@ -54,7 +52,7 @@ export default function Home() {
         ) : heroesToRender.length === 0 ? (
           <span className="flex justify-center pt-32 text-2xl">Loading...</span>
         ) : (
-          <section className="flex gap-6 flex-wrap px-10 py-8 justify-between">
+          <section className="flex gap-2 md:gap-6 flex-wrap px-2 md:px-10 py-8 justify-center md:justify-between">
             {heroesToRender.map((hero) => (
               <HeroCard
                 key={hero.id}

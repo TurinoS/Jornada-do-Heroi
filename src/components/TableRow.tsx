@@ -27,7 +27,7 @@ export default function TableRow({
         </span>}
       </td>
       <td
-        className="font-bold capitalize w-[200px] text-center"
+        className="font-bold capitalize w-[150px] md:w-[200px] text-center"
       >
         {statName}
       </td>

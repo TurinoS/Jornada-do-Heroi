@@ -63,13 +63,15 @@ export default function HeroCard({
       onClick={() => handleClick(sm)}
       className={`rounded-lg border-2 overflow-hidden shadow-none flex flex-col items-center group ${
         !sm &&
-        `cursor-pointer hover:scale-105 transition duration-500`
+        `cursor-pointer md:hover:scale-105 transition duration-500`
       }`} style={{
         borderColor: `var(--${maxPowerstatName})`,
       }}
     >
-      <Image src={imgs.md} alt={name} width={150} height={150} />
-      <div className="pt-2 ">
+      {sm ? <Image src={imgs.md} alt={name} width={90} height={120} priority />
+      :
+      <Image src={imgs.md} alt={name} width={150} height={225} priority />}
+      <div className="md:pt-2">
         {!sm && (
           <p className="flex justify-center items-center gap-2 text-lg">
             {maxPowerstatName === "strength" ? (
@@ -87,7 +89,7 @@ export default function HeroCard({
             )}
           </p>
         )}
-        <h3 className="text-lg font-bold text-center w-full">{name}</h3>
+        <h3 className="md:text-lg font-bold text-center w-full">{name}</h3>
       </div>
       <style jsx>{`
         .group:hover {
