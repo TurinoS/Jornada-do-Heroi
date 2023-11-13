@@ -37,14 +37,9 @@ export default function HeroCard({
     const handleResize = () => {
       setIsScreenSmaller(window.innerWidth < 768);
     };
-
-    // Adiciona um listener de redimensionamento
     window.addEventListener("resize", handleResize);
-
-    // Chama handleResize inicialmente para definir o estado inicial
     handleResize();
 
-    // Remove o listener de redimensionamento ao desmontar o componente
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -79,7 +74,7 @@ export default function HeroCard({
   return (
     <div
       onClick={() => handleClick(sm)}
-      className={`rounded-lg border-2 overflow-hidden shadow-none flex flex-col items-center group ${
+      className={`rounded-lg border-2 overflow-hidden flex flex-col items-center group ${
         !sm &&
         `cursor-pointer md:hover:scale-105 transition duration-500`
       }`} style={{

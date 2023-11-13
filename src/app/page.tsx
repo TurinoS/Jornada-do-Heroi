@@ -24,7 +24,7 @@ export default function Home() {
   return (
     <main className="min-h-screen flex">
       <Sidebar />
-      <div className="w-full md:py-4 py-1 md:ml-[175px]">
+      <div className="w-full md:py-4 py-1 md:ml-[175px] mb-[150px] md:mb-0">
         <Header />
         <div className="flex justify-center gap-4 px-2 pt-4">
           <Button
