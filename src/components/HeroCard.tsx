@@ -7,7 +7,7 @@ import {
   GiBattleGear,
 } from "react-icons/gi";
 import { AiFillThunderbolt } from "react-icons/ai";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ContextAPI } from "@/context/ContextAPI";
 
 type CardProps = {
@@ -31,6 +31,24 @@ export default function HeroCard({
   sm,
 }: CardProps) {
   const { cardsSelection, setCardsSelection } = useContext(ContextAPI);
+  const [isScreenSmaller, setIsScreenSmaller] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsScreenSmaller(window.innerWidth < 768);
+    };
+
+    // Adiciona um listener de redimensionamento
+    window.addEventListener("resize", handleResize);
+
+    // Chama handleResize inicialmente para definir o estado inicial
+    handleResize();
+
+    // Remove o listener de redimensionamento ao desmontar o componente
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const totalPower = Object.values(powerstats).reduce(
     (acc, value) => acc + value,
@@ -68,7 +86,7 @@ export default function HeroCard({
         borderColor: `var(--${maxPowerstatName})`,
       }}
     >
-      {sm ? <Image src={imgs.md} alt={name} width={90} height={120} priority />
+      {isScreenSmaller && sm ? <Image src={imgs.md} alt={name} width={90} height={120} priority />
       :
       <Image src={imgs.md} alt={name} width={150} height={225} priority />}
       <div className="md:pt-2">
