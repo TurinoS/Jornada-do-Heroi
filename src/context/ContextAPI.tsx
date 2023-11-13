@@ -5,7 +5,6 @@ import { Dispatch, ReactNode, SetStateAction, createContext, useEffect, useState
 interface HeoresData {
     id: number,
     name: string,
-    // slug: string,
     powerstats: {
         inteligence: number,
         strength: number,
@@ -14,19 +13,6 @@ interface HeoresData {
         power: number,
         combat: number,
     }
-    // appearance: {
-    //     gender: string,
-    //     race: string,
-    //     height: string[],
-    //     weight: string[],
-    //     eyeColor: string,
-    //     hairColor: string,
-    // }
-    // biography: {
-    //     fullName: string,
-    //     alterEgos: string,
-    //     aliases: string,
-    // }
     images: {
         sm: string,
         md: string,
@@ -79,7 +65,7 @@ export default function ContextAPIProvider({ children }: { children: ReactNode }
 
     useEffect(() => {
         const fetchData = async () => {
-            const res = await fetch('http://homologacao3.azapfy.com.br/api/ps/metahumans');
+            const res = await fetch("/api/metahumans");
             const jsonData = await res.json();
             setData(jsonData);
         };
